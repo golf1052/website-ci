@@ -26,7 +26,7 @@ namespace website_ci.Controllers
                     ProcessStartInfo info = new ProcessStartInfo("git", "pull");
                     info.UseShellExecute = false;
                     info.WorkingDirectory = (string)settings[repo]["workingDir"];
-                    Process.Start(info);
+                    Process.Start(info).WaitForExit();
                 }
                 return "push";
             }
