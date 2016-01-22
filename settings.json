@@ -1,5 +1,28 @@
 {
     "golf1052": {
-        "workingDir": "/var/www/golf1052.com/public_html"
+        "workingDir": "/var/www/golf1052.com/public_html",
+        "commands": [
+            {
+                "process": "git",
+                "args": "pull"
+            }
+        ]
+    },
+    "venmo-for-slack": {
+        "workingDir": "/var/www/golf1052.com/public_html/venmo",
+        "commands": [
+            {
+                "process": "service",
+                "args": "venmo stop"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "service",
+                "args": "venmo start"
+            }
+        ]
     }
 }

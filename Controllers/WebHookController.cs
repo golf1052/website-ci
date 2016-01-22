@@ -10,7 +10,7 @@ namespace website_ci.Controllers
     public class WebHookController : Controller
     {
         [HttpPost]
-        public string HandleHook([FromBody]JObject o)
+        public bool HandleHook([FromBody]JObject o)
         {
             string file = string.Empty;
             using (StreamReader reader = new StreamReader(System.IO.File.Open("settings.json", FileMode.Open)))
@@ -23,16 +23,19 @@ namespace website_ci.Controllers
                 string repo = (string)o["repository"]["name"];
                 if (settings[repo] != null)
                 {
-                    ProcessStartInfo info = new ProcessStartInfo("git", "pull");
-                    info.UseShellExecute = false;
-                    info.WorkingDirectory = (string)settings[repo]["workingDir"];
-                    Process.Start(info).WaitForExit();
+                    foreach(JObject command in (JArray)settings[repo]["commands"])
+                    {
+                        ProcessStartInfo info = new ProcessStartInfo((string)command["process"], (string)command["args"]);
+                        info.UseShellExecute = false;
+                        info.WorkingDirectory = (string)settings[repo]["workingDir"];
+                        Process.Start(info).WaitForExit();
+                    }
                 }
-                return "push";
+                return true;
             }
             else
             {
-                return "not push";    
+                return false;
             }
         }
     }
