@@ -24,5 +24,46 @@
                 "args": "venmo start"
             }
         ]
+    },
+    "close-call": {
+        "workingDir": "/var/www/golf1052.com/public_html/close-call",
+        "commands": [
+            {
+                "process": "service",
+                "args": "close stop"
+            },
+            {
+                "process": "service",
+                "args": "closerqworker stop"
+            },
+            {
+                "process": "service",
+                "args": "closerqscheduler stop"
+            },
+            {
+                "process": "service",
+                "args": "close-call stop"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "service",
+                "args": "close start"
+            },
+            {
+                "process": "service",
+                "args": "closerqworker start"
+            },
+            {
+                "process": "service",
+                "args": "closerqscheduler start"
+            },
+            {
+                "process": "service",
+                "args": "close-call start"
+            },
+        ]
     }
 }
