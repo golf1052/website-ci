@@ -63,7 +63,24 @@
             {
                 "process": "service",
                 "args": "close-call start"
+            }
+        ]
+    },
+    "Attention_Passengers": {
+        "workingDir": "/var/www/golf1052.com/public_html/attentionpassengers",
+        "commands": [
+            {
+                "process": "service",
+                "args": "attentionpassengers stop"
             },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "service",
+                "args": "attentionpassengers start"
+            }
         ]
     }
 }
