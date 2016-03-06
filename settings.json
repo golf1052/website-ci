@@ -82,5 +82,34 @@
                 "args": "attentionpassengers start"
             }
         ]
+    },
+    "Ghost": {
+        "workingDir": "/var/www/golf1052.com/public_html/blog",
+        "commands": [
+            {
+                "process": "forever",
+                "args": "stop index.js"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "npm",
+                "args": "install"
+            },
+            {
+                "process": "grunt",
+                "args": "init"
+            },
+            {
+                "process": "grunt",
+                "args": "prod"
+            },
+            {
+                "process": "./starter.sh",
+                "args": ""
+            }
+        ]
     }
 }
