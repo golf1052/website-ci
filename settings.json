@@ -93,7 +93,7 @@
             {
                 "process": "git",
                 "args": "checkout stable"
-            }
+            },
             {
                 "process": "git",
                 "args": "pull"
