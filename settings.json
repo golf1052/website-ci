@@ -100,6 +100,14 @@
             },
             {
                 "process": "npm",
+                "args": "cache clean"
+            },
+            {
+                "process": "grunt",
+                "args": "clean"
+            },
+            {
+                "process": "npm",
                 "args": "install"
             },
             {
