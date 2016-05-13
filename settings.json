@@ -123,5 +123,15 @@
                 "args": ""
             }
         ]
+    },
+    "website-ci": {
+        // yes we can update ourselves, we however can only update configs, not code :(
+        "workingDir": "/var/www/golf1052.com/public_html/website-ci",
+        "commands": [
+            {
+                "process": "git",
+                "args": "pull"
+            }
+        ]
     }
 }
