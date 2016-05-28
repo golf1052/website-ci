@@ -7,6 +7,12 @@
       "environmentVariables": {
         "ASPNET_ENV": "Development"
       }
+    },
+    "website-ci": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
