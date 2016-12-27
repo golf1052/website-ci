@@ -9,7 +9,7 @@
         ]
     },
     "venmo-for-slack": {
-        "workingDir": "/var/www/golf1052.com/public_html/venmo",
+        "workingDir": "/var/www/golf1052.com/projects/venmo",
         "commands": [
             {
                 "process": "service",
@@ -26,7 +26,7 @@
         ]
     },
     "close-call": {
-        "workingDir": "/var/www/golf1052.com/public_html/close-call",
+        "workingDir": "/var/www/golf1052.com/projects/close-call",
         "commands": [
             {
                 "process": "service",
@@ -67,7 +67,7 @@
         ]
     },
     "Attention_Passengers": {
-        "workingDir": "/var/www/golf1052.com/public_html/attentionpassengers",
+        "workingDir": "/var/www/golf1052.com/projects/attentionpassengers",
         "commands": [
             {
                 "process": "service",
@@ -84,7 +84,7 @@
         ]
     },
     // "Ghost": {
-    //     "workingDir": "/var/www/golf1052.com/public_html/blog",
+    //     "workingDir": "/var/www/golf1052.com/projects/blog",
     //     "commands": [
     //         {
     //             "process": "forever",
@@ -126,7 +126,7 @@
     // },
     "website-ci": {
         // yes we can update ourselves, we however can only update configs, not code :(
-        "workingDir": "/var/www/golf1052.com/public_html/website-ci",
+        "workingDir": "/var/www/golf1052.com/projects/website-ci",
         "commands": [
             {
                 "process": "git",
