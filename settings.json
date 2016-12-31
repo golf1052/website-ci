@@ -133,5 +133,18 @@
                 "args": "pull"
             }
         ]
+    },
+    "personality-viz": {
+        "workingDir": "/var/www/golf1052.com/projects/personality-viz",
+        "commands": [
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "gulp",
+                "args": ""
+            }
+        ]
     }
 }
