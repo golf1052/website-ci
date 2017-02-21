@@ -146,5 +146,34 @@
                 "args": ""
             }
         ]
+    },
+    "botbot": {
+        "workingDir": "/var/www/golf1052.com/projects/botbot",
+        "commands": [
+            {
+                "process": "service",
+                "args": "botbot stop"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "cd",
+                "args": "botbot"
+            },
+            {
+                "process": "dotnet",
+                "args": "restore"
+            },
+            {
+                "process": "dotnet",
+                "args": "build"
+            },
+            {
+                "process": "service",
+                "args": "botbot start"
+            }
+        ]
     }
 }
