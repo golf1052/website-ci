@@ -21,7 +21,7 @@
             },
             {
                 "process": "service",
-                "args": "venmo start"
+                "args": "start venmo"
             }
         ]
     },
@@ -151,8 +151,8 @@
         "workingDir": "/var/www/golf1052.com/projects/botbot",
         "commands": [
             {
-                "process": "service",
-                "args": "botbot stop"
+                "process": "supervisorctl",
+                "args": "stop botbot"
             },
             {
                 "process": "git",
@@ -171,8 +171,8 @@
                 "args": "build"
             },
             {
-                "process": "service",
-                "args": "botbot start"
+                "process": "supervisorctl",
+                "args": "start botbot"
             }
         ]
     }
