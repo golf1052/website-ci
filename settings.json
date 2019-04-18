@@ -12,15 +12,15 @@
         "workingDir": "/var/www/golf1052.com/projects/venmo",
         "commands": [
             {
-                "process": "service",
-                "args": "venmo stop"
+                "process": "supervisorctl",
+                "args": "stop venmo"
             },
             {
                 "process": "git",
                 "args": "pull"
             },
             {
-                "process": "service",
+                "process": "supervisorctl",
                 "args": "start venmo"
             }
         ]
@@ -70,16 +70,16 @@
         "workingDir": "/var/www/golf1052.com/projects/attentionpassengers",
         "commands": [
             {
-                "process": "service",
-                "args": "attentionpassengers stop"
+                "process": "supervisorctl",
+                "args": "stop attnpass"
             },
             {
                 "process": "git",
                 "args": "pull"
             },
             {
-                "process": "service",
-                "args": "attentionpassengers start"
+                "process": "supervisorctl",
+                "args": "start attnpass"
             }
         ]
     },
