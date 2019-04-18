@@ -159,10 +159,6 @@
                 "args": "pull"
             },
             {
-                "process": "cd",
-                "args": "botbot"
-            },
-            {
                 "process": "dotnet",
                 "args": "restore"
             },
