@@ -34,6 +34,7 @@ namespace website_ci.Controllers
                         ProcessStartInfo info = new ProcessStartInfo(processCommand, argsString);
                         info.UseShellExecute = false;
                         info.WorkingDirectory = (string)settings[repo]["workingDir"];
+                        await SendSlackMessage($"Running: {processCommand} {argsString}");
                         Process process = Process.Start(info);
                         process.WaitForExit();
                         if (process.ExitCode != 0)
