@@ -171,5 +171,30 @@
                 "args": "start botbot"
             }
         ]
+    },
+    "services.golf1052.com": {
+        "workingDir": "/var/www/golf1052.com/services.golf1052.com",
+        "commands": [
+            {
+                "process": "supervisorctl",
+                "args": "stop golf1052-services"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "dotnet",
+                "args": "restore"
+            },
+            {
+                "process": "dotnet",
+                "args": "build"
+            },
+            {
+                "process": "supervisorctl",
+                "args": "start golf1052-services"
+            }
+        ]
     }
 }
