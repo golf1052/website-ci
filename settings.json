@@ -196,5 +196,30 @@
                 "args": "start golf1052-services"
             }
         ]
+    },
+    "FixSpotifyAlbums": {
+        "workingDir": "/var/www/golf1052.com/projects/FixSpotifyAlbums",
+        "commands": [
+            {
+                "process": "supervisorctl",
+                "args": "stop fix-spotify"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "dotnet",
+                "args": "restore"
+            },
+            {
+                "process": "dotnet",
+                "args": "build"
+            },
+            {
+                "process": "supervisorctl",
+                "args": "start fix-spotify"
+            }
+        ]
     }
 }
