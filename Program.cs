@@ -1,5 +1,5 @@
-using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace website_ci
 {
@@ -7,12 +7,15 @@ namespace website_ci
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseUrls("http://127.0.0.1:8889")
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
+            var host = Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.ConfigureKestrel(serverOptions =>
+                    {
+                    })
+                    .UseStartup<Startup>()
+                    .UseUrls("http://127.0.0.1:8889");
+                })
                 .Build();
             
             host.Run();
