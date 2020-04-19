@@ -25,6 +25,23 @@
             }
         ]
     },
+    "VenmoForSlack": {
+        "workingDir": "/var/www/golf1052.com/projects/VenmoForSlack",
+        "commands": [
+            {
+                "process": "supervisorctl",
+                "args": "stop venmo-dotnet"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "supervisorctl",
+                "args": "start venmo-dotnet"
+            }
+        ]
+    },
     "close-call": {
         "workingDir": "/var/www/golf1052.com/projects/close-call",
         "commands": [
