@@ -100,47 +100,6 @@
             }
         ]
     },
-    // "Ghost": {
-    //     "workingDir": "/var/www/golf1052.com/projects/blog",
-    //     "commands": [
-    //         {
-    //             "process": "forever",
-    //             "args": "stop index.js"
-    //         },
-    //         {
-    //             "process": "git",
-    //             "args": "checkout stable"
-    //         },
-    //         {
-    //             "process": "git",
-    //             "args": "pull"
-    //         },
-    //         {
-    //             "process": "npm",
-    //             "args": "cache clean"
-    //         },
-    //         {
-    //             "process": "grunt",
-    //             "args": "clean"
-    //         },
-    //         {
-    //             "process": "npm",
-    //             "args": "install"
-    //         },
-    //         {
-    //             "process": "grunt",
-    //             "args": "init"
-    //         },
-    //         {
-    //             "process": "grunt",
-    //             "args": "prod"
-    //         },
-    //         {
-    //             "process": "./starter.sh",
-    //             "args": ""
-    //         }
-    //     ]
-    // },
     "website-ci": {
         // yes we can update ourselves, we however can only update configs, not code :(
         "workingDir": "/var/www/golf1052.com/projects/website-ci",
