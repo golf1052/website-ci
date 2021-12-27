@@ -40,7 +40,7 @@ namespace website_ci.Controllers
                         else
                         {
                             info = new ProcessStartInfo(processCommand, argsString);
-                            processCommand += $" {argsString}";
+                            stringCommand += $" {argsString}";
                         }
                         info.UseShellExecute = false;
                         info.WorkingDirectory = (string)settings[repo]["workingDir"];
