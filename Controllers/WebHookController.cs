@@ -43,6 +43,7 @@ namespace website_ci.Controllers
                             stringCommand += $" {argsString}";
                         }
                         info.UseShellExecute = false;
+                        info.RedirectStandardError = true;
                         info.WorkingDirectory = (string)settings[repo]["workingDir"];
                         await SendSlackMessage($"Running {stringCommand}");
                         using Process process = Process.Start(info);
