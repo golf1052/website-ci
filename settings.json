@@ -197,5 +197,30 @@
                 "args": "start fix-spotify"
             }
         ]
+    },
+    "personality-server": {
+        "workingDir": "/var/www/golf1052.com/projects/personality-server",
+        "commands": [
+            {
+                "process": "supervisorctl",
+                "args": "stop personality-server"
+            },
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "dotnet",
+                "args": "restore"
+            },
+            {
+                "process": "dotnet",
+                "args": "build"
+            },
+            {
+                "process": "supervisorctl",
+                "args": "start personality-server"
+            }
+        ]
     }
 }
