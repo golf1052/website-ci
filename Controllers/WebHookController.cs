@@ -46,15 +46,18 @@ namespace website_ci.Controllers
                         info.WorkingDirectory = (string)settings[repo]["workingDir"];
                         await SendSlackMessage($"Running {stringCommand}");
                         using Process process = Process.Start(info);
+                        string errorOutput = process.StandardError.ReadToEnd();
                         TimeSpan waitTime = TimeSpan.FromMinutes(5);
                         bool waitResult = process.WaitForExit((int)waitTime.TotalMilliseconds);
                         if (process.ExitCode != 0)
                         {
                             await SendSlackMessage($"{repo} command {stringCommand} exited with code {process.ExitCode}");
+                            await SendSlackMessage(errorOutput);
                         }
                         if (!waitResult)
                         {
                             await SendSlackMessage($"{repo} command {stringCommand} timed out after {waitTime}");
+                            await SendSlackMessage(errorOutput);
                         }
                     }
                     await SendSlackMessage($"website-ci finished update of {repo}");
