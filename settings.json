@@ -222,5 +222,18 @@
                 "args": "start personality-server"
             }
         ]
+    },
+    "personality-vis": {
+        "workingDir": "/var/www/golf1052.com/projects/personality-vis",
+        "commands": [
+            {
+                "process": "git",
+                "args": "pull"
+            },
+            {
+                "process": "gulp",
+                "args": ""
+            }
+        ]
     }
 }

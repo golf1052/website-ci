@@ -31,15 +31,30 @@ namespace website_ci.Controllers
                     {
                         string processCommand = (string)command["process"];
                         string argsString = (string)command["args"];
-                        ProcessStartInfo info = new ProcessStartInfo(processCommand, argsString);
+                        string stringCommand = processCommand;
+                        ProcessStartInfo info;
+                        if (string.IsNullOrWhiteSpace(argsString))
+                        {
+                            info = new ProcessStartInfo(processCommand);
+                        }
+                        else
+                        {
+                            info = new ProcessStartInfo(processCommand, argsString);
+                            processCommand += $" {argsString}";
+                        }
                         info.UseShellExecute = false;
                         info.WorkingDirectory = (string)settings[repo]["workingDir"];
-                        await SendSlackMessage($"Running: {processCommand} {argsString}");
-                        Process process = Process.Start(info);
-                        process.WaitForExit();
+                        await SendSlackMessage($"Running {stringCommand}");
+                        using Process process = Process.Start(info);
+                        TimeSpan waitTime = TimeSpan.FromMinutes(5);
+                        bool waitResult = process.WaitForExit((int)waitTime.TotalMilliseconds);
                         if (process.ExitCode != 0)
                         {
-                            await SendSlackMessage($"{repo} command {processCommand} {argsString} exited with code {process.ExitCode}");
+                            await SendSlackMessage($"{repo} command {stringCommand} exited with code {process.ExitCode}");
+                        }
+                        if (!waitResult)
+                        {
+                            await SendSlackMessage($"{repo} command {stringCommand} timed out after {waitTime}");
                         }
                     }
                     await SendSlackMessage($"website-ci finished update of {repo}");
