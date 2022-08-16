@@ -13,7 +13,7 @@ namespace website_ci.Controllers
     public class WebHookController : Controller
     {
         [HttpPost]
-        public async Task<bool> HandleHook([FromBody]JObject o)
+        public bool HandleHook([FromBody]JObject o)
         {
             string file = string.Empty;
             using (StreamReader reader = new StreamReader(System.IO.File.Open("settings.json", FileMode.Open)))
@@ -26,7 +26,7 @@ namespace website_ci.Controllers
                 string repo = (string)o["repository"]["name"];
                 if (settings[repo] != null)
                 {
-                    await SendSlackMessage($"website-ci started update of {repo}");
+                    _ = SendSlackMessage($"website-ci started update of {repo}");
                     foreach(JObject command in (JArray)settings[repo]["commands"])
                     {
                         string processCommand = (string)command["process"];
@@ -45,23 +45,23 @@ namespace website_ci.Controllers
                         info.UseShellExecute = false;
                         info.RedirectStandardError = true;
                         info.WorkingDirectory = (string)settings[repo]["workingDir"];
-                        await SendSlackMessage($"Running {stringCommand}");
+                        _ = SendSlackMessage($"Running {stringCommand}");
                         using Process process = Process.Start(info);
                         string errorOutput = process.StandardError.ReadToEnd();
                         TimeSpan waitTime = TimeSpan.FromMinutes(5);
                         bool waitResult = process.WaitForExit((int)waitTime.TotalMilliseconds);
                         if (process.ExitCode != 0)
                         {
-                            await SendSlackMessage($"{repo} command {stringCommand} exited with code {process.ExitCode}");
-                            await SendSlackMessage(errorOutput);
+                            _ = SendSlackMessage($"{repo} command {stringCommand} exited with code {process.ExitCode}");
+                            _ = SendSlackMessage(errorOutput);
                         }
                         if (!waitResult)
                         {
-                            await SendSlackMessage($"{repo} command {stringCommand} timed out after {waitTime}");
-                            await SendSlackMessage(errorOutput);
+                            _ = SendSlackMessage($"{repo} command {stringCommand} timed out after {waitTime}");
+                            _ = SendSlackMessage(errorOutput);
                         }
                     }
-                    await SendSlackMessage($"website-ci finished update of {repo}");
+                    _ = SendSlackMessage($"website-ci finished update of {repo}");
                 }
                 return true;
             }
