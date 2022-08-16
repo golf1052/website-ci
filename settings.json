@@ -37,6 +37,14 @@
                 "args": "pull"
             },
             {
+                "process": "dotnet",
+                "args": "restore"
+            },
+            {
+                "process": "dotnet",
+                "args": "build"
+            },
+            {
                 "process": "supervisorctl",
                 "args": "start venmo-dotnet"
             }
