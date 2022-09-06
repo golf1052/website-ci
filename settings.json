@@ -45,6 +45,10 @@
                 "args": "build"
             },
             {
+                "process": "dotnet",
+                "args": "test"
+            },
+            {
                 "process": "supervisorctl",
                 "args": "start venmo-dotnet"
             }
