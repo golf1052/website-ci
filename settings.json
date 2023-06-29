@@ -42,7 +42,7 @@
             },
             {
                 "process": "dotnet",
-                "args": "build"
+                "args": "build -c Release"
             },
             {
                 "process": "dotnet",
@@ -152,7 +152,7 @@
             },
             {
                 "process": "dotnet",
-                "args": "build"
+                "args": "build -c Release"
             },
             {
                 "process": "supervisorctl",
