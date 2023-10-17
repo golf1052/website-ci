@@ -241,10 +241,6 @@
             {
                 "process": "git",
                 "args": "pull"
-            },
-            {
-                "process": "gulp",
-                "args": ""
             }
         ]
     }
