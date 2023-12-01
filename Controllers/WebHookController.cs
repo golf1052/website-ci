@@ -27,6 +27,16 @@ namespace website_ci.Controllers
                 if (settings[repo] != null)
                 {
                     _ = SendSlackMessage($"website-ci started update of {repo}");
+                    JObject headCommit = (JObject)o["head_commit"];
+                    if (headCommit != null)
+                    {
+                        _ = SendSlackMessage($"Commit message: {headCommit["message"]}");
+                        JObject author = (JObject)headCommit["author"];
+                        if (author != null)
+                        {
+                            _ = SendSlackMessage($"Committed by {author["name"]} <{author["email"]}> (https://github.com/{author["username"]})");
+                        }
+                    }
                     foreach(JObject command in (JArray)settings[repo]["commands"])
                     {
                         string processCommand = (string)command["process"];
