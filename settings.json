@@ -243,5 +243,14 @@
                 "args": "pull"
             }
         ]
+    },
+    "isseattlecompplandone": {
+        "workingDir": "/var/www/golf1052.com/projects/isseattlecompplandone",
+        "commands": [
+            {
+                "process": "git",
+                "args": "pull"
+            }
+        ]
     }
 }
