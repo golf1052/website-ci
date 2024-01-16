@@ -252,5 +252,14 @@
                 "args": "pull"
             }
         ]
+    },
+    "cash-for-dicks-react": {
+        "workingDir": "/var/www/cashfordicks.com/public_html/cash-for-dicks-react",
+        "commands": [
+            {
+                "process": "git",
+                "args": "pull"
+            }
+        ]
     }
 }
